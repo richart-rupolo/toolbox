@@ -1,0 +1,1 @@
+Ensure that all i18n keys follow the pattern `i18n_` as a prefix.  

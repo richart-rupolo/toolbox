@@ -1,0 +1,3 @@
+- Description of the project 
+- And buy me a coffe with a link to my pix/paypal/cripto wallet
+- A link for a recouring donation if they whant 

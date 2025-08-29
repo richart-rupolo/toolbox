@@ -1,0 +1,24 @@
+- Button colors softer than hacker green
+- Try placing text formatting buttons (underline, italic) and keep them minimal
+- Remove double spaces
+- Remove extra line breaks
+- Remove tabs and convert to spaces
+- Convert text to uppercase / lowercase / Capitalized
+- Character counter
+- Word counter
+- Remove formatting (paste plain text without styles)
+- Remove accents (e.g., "ação" → "acao")
+- Trim spaces at the start/end of each line
+- Sort lines (A-Z, Z-A)
+- Remove duplicate lines
+- Split text into lines by delimiter (comma, semicolon, etc.)
+- Join lines into a single line (with space or comma)
+- Convert multiple spaces into a single space
+- Add prefix/suffix to each line
+- Reverse text (characters or lines)
+- Compress everything into one line (no breaks)
+- Extract numbers / emails / links from text
+- Simple find & replace
+- Convert to JSON string (escape quotes and line breaks)
+- Search words
+- Recognize programming languages
