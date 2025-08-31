@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next'
+import type { Page } from '../types/Page' // ✅ import como tipo
 
+export const AboutPage: Page = { name: 'about' }
 const About = () => {
   const { t } = useTranslation()
 

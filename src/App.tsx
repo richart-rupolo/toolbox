@@ -1,52 +1,27 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './App.css'
 import Sidebar from './components/Sidebar/Sidebar'
 import LanguageSelector from './components/LanguageSelector/LanguageSelector'
-import Home from './pages/Home'
-import About from './pages/About'
-import TextEditor from './pages/Tools/TextEditor'
-import JsonFormatter from './pages/Tools/JsonFormatter'
-
-type Page = 'home' | 'about' | 'text-editor' | 'json-formatter'
+import Home, { HomePage } from './pages/Home'
+import About, { AboutPage } from './pages/About'
+import TextEditor, { TextEditorPage } from './pages/Tools/TextEditor/TextEditor'
+import JsonFormatter, { JsonFormatterPage } from './pages/Tools/JsonFormatter'
+import type { Page } from './types/Page' // Page agora é um objeto { name: string }
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<Page>('home')
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [currentPage, setCurrentPage] = useState<Page>(HomePage)
   const { t } = useTranslation()
 
-  // Detectar se é mobile
-  const isMobile = window.innerWidth <= 768
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) {
-        setSidebarOpen(false)
-      }
-    }
-
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
-
-  const toggleSidebar = () => {
-    if (isMobile) {
-      setSidebarOpen(!sidebarOpen)
-    } else {
-      setSidebarCollapsed(!sidebarCollapsed)
-    }
-  }
-
   const renderPage = () => {
-    switch (currentPage) {
-      case 'home':
+    switch (currentPage.name) {
+      case HomePage.name:
         return <Home />
-      case 'about':
+      case AboutPage.name:
         return <About />
-      case 'text-editor':
+      case TextEditorPage.name:
         return <TextEditor />
-      case 'json-formatter':
+      case JsonFormatterPage.name:
         return <JsonFormatter />
       default:
         return <Home />
@@ -59,23 +34,14 @@ function App() {
         <h1 className="title">{t('i18n_title')}</h1>
         <LanguageSelector />
       </header>
-      
+
       <div className="main-container">
         <Sidebar 
           currentPage={currentPage} 
-          onPageChange={setCurrentPage}
-          collapsed={sidebarCollapsed}
-          open={sidebarOpen}
+          onPageChange={setCurrentPage} 
         />
         
         <main className="content">
-          <button 
-            className="sidebar-toggle"
-            onClick={toggleSidebar}
-            title={t('i18n_toggleSidebar')}
-          >
-            {sidebarCollapsed || sidebarOpen ? '◀' : '▶'}
-          </button>
           {renderPage()}
         </main>
       </div>

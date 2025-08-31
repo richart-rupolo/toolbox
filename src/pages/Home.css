@@ -1,0 +1,63 @@
+.page {
+  padding: 2rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--hacker-green);
+}
+
+.page-description {
+  font-size: 1rem;
+  color: var(--text-light-gray);
+  margin-bottom: 2rem;
+}
+
+.tool-container {
+  margin-top: 2rem;
+}
+
+.tool-header {
+  margin-bottom: 1.5rem;
+}
+
+.tool-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--hacker-green);
+}
+
+.tool-description {
+  color: var(--text-light-gray);
+  font-size: 1rem;
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.tool-card {
+  background: var(--midnight-darker);
+  padding: 1.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.tool-card-title {
+  color: var(--hacker-green);
+  margin-bottom: 0.5rem;
+}
+
+.tool-card-description {
+  color: var(--text-light-gray);
+  font-size: 0.9rem;
+}

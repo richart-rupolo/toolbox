@@ -1,4 +1,8 @@
 import { useTranslation } from 'react-i18next'
+import './home.css'
+import type { Page } from '../types/Page' // ✅ import como tipo
+
+export const HomePage: Page = { name: 'home' }
 
 const Home = () => {
   const { t } = useTranslation()
@@ -20,27 +24,17 @@ const Home = () => {
           </p>
         </div>
         
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
-          <div style={{ 
-            background: 'var(--midnight-darker)', 
-            padding: '1.5rem', 
-            borderRadius: '6px', 
-            border: '1px solid var(--border-color)' 
-          }}>
-            <h3 style={{ color: 'var(--hacker-green)', marginBottom: '0.5rem' }}>{t('i18n_textEditor')}</h3>
-            <p style={{ color: 'var(--text-light-gray)', fontSize: '0.9rem' }}>
+        <div className="tool-grid">
+          <div className="tool-card">
+            <h3 className="tool-card-title">{t('i18n_textEditor')}</h3>
+            <p className="tool-card-description">
               {t('i18n_textEditorDesc')}
             </p>
           </div>
           
-          <div style={{ 
-            background: 'var(--midnight-darker)', 
-            padding: '1.5rem', 
-            borderRadius: '6px', 
-            border: '1px solid var(--border-color)' 
-          }}>
-            <h3 style={{ color: 'var(--hacker-green)', marginBottom: '0.5rem' }}>{t('i18n_jsonFormatter')}</h3>
-            <p style={{ color: 'var(--text-light-gray)', fontSize: '0.9rem' }}>
+          <div className="tool-card">
+            <h3 className="tool-card-title">{t('i18n_jsonFormatter')}</h3>
+            <p className="tool-card-description">
               {t('i18n_jsonFormatterDesc')}
             </p>
           </div>

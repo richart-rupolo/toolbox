@@ -1,31 +1,60 @@
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import './Sidebar.css'
+import type { Page } from '../../types/Page'
+import { HomePage } from '../../pages/Home'
+import { AboutPage } from '../../pages/About'
+import { TextEditorPage } from '../../pages/Tools/TextEditor/TextEditor'
+import { JsonFormatterPage } from '../../pages/Tools/JsonFormatter'
 
 interface SidebarProps {
-  currentPage: string
-  onPageChange: (page: string) => void
-  collapsed?: boolean
-  open?: boolean
+  currentPage: Page
+  onPageChange: (page: Page) => void
 }
 
-const Sidebar = ({ currentPage, onPageChange, collapsed = false, open = false }: SidebarProps) => {
+const Sidebar = ({ currentPage, onPageChange }: SidebarProps) => {
   const { t } = useTranslation()
+  const [collapsed, setCollapsed] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 768
+      setIsMobile(mobile)
+      if (!mobile) setOpen(false)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const toggleSidebar = () => {
+    if (isMobile) setOpen(!open)
+    else setCollapsed(!collapsed)
+  }
 
   const sidebarClasses = `sidebar ${collapsed ? 'collapsed' : ''} ${open ? 'open' : ''}`
 
   return (
     <aside className={sidebarClasses}>
-      {/* Seção de Navegação Principal */}
+      <div className="toggle-container">
+        <button className="sidebar-toggle" onClick={toggleSidebar}>
+          {collapsed || open ? '◀' : '▶'}
+        </button>
+      </div>
+
+      {/* Seção de Navegação */}
       <div className="sidebar-section">
         <h3 className="sidebar-title">{t('i18n_navigation')}</h3>
         <button
-          className={`nav-button ${currentPage === 'home' ? 'active' : ''}`}
-          onClick={() => onPageChange('home')}
+          className={`nav-button ${currentPage === HomePage ? 'active' : ''}`}
+          onClick={() => onPageChange(HomePage)}
         >
           {t('i18n_home')}
         </button>
         <button
-          className={`nav-button ${currentPage === 'about' ? 'active' : ''}`}
-          onClick={() => onPageChange('about')}
+          className={`nav-button ${currentPage === AboutPage ? 'active' : ''}`}
+          onClick={() => onPageChange(AboutPage)}
         >
           {t('i18n_about')}
         </button>
@@ -35,14 +64,14 @@ const Sidebar = ({ currentPage, onPageChange, collapsed = false, open = false }:
       <div className="sidebar-section">
         <h3 className="sidebar-title">{t('i18n_tools')}</h3>
         <button
-          className={`tool-button ${currentPage === 'text-editor' ? 'active' : ''}`}
-          onClick={() => onPageChange('text-editor')}
+          className={`tool-button ${currentPage === TextEditorPage ? 'active' : ''}`}
+          onClick={() => onPageChange(TextEditorPage)}
         >
           {t('i18n_textEditor')}
         </button>
         <button
-          className={`tool-button ${currentPage === 'json-formatter' ? 'active' : ''}`}
-          onClick={() => onPageChange('json-formatter')}
+          className={`tool-button ${currentPage === JsonFormatterPage ? 'active' : ''}`}
+          onClick={() => onPageChange(JsonFormatterPage)}
         >
           {t('i18n_jsonFormatter')}
         </button>

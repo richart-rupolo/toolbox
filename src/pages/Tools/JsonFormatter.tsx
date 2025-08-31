@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import type { Page } from '../../types/Page' // ✅ import como tipo
+
+export const JsonFormatterPage: Page = { name: 'json-formatter' }
 
 const JsonFormatter = () => {
   const [inputJson, setInputJson] = useState('')
