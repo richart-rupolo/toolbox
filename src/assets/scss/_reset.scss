@@ -1,0 +1,28 @@
+@use 'variables' as vars;
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: vars.$midnight-bg;
+  color: vars.$text-white;
+  font-family: vars.$font-mono;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

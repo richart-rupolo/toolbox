@@ -1,0 +1,157 @@
+@use '@/assets/scss/variables' as vars;
+
+.sidebar {
+  width: vars.$sidebar-width;
+  background: vars.$midnight-darker;
+  border-right: 2px solid vars.$border-color;
+  padding: vars.$spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: vars.$spacing-md;
+  transition: width 0.3s ease, transform 0.3s ease;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.sidebar.collapsed {
+  width: vars.$sidebar-collapsed-width;
+  padding: vars.$spacing-md 0.5rem;
+}
+
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-section {
+  border-bottom: 1px solid vars.$border-color;
+  padding-bottom: vars.$spacing-md;
+}
+
+.sidebar-section:last-child {
+  border-bottom: none;
+}
+
+.sidebar-title {
+  color: vars.$hacker-green;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar.collapsed .sidebar-title {
+  display: none;
+}
+
+/* Container do botão toggle dentro da sidebar */
+.toggle-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: vars.$spacing-md;
+}
+
+.sidebar-toggle {
+  background: vars.$hacker-green;
+  color: vars.$midnight-darker;
+  border: none;
+  border-radius: vars.$border-radius-sm;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  background: vars.$hacker-green-dim;
+}
+
+.nav-button,
+.tool-button {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: transparent;
+  border: 1px solid vars.$border-color;
+  font-family: vars.$font-primary;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  border-radius: vars.$border-radius-sm;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar.collapsed .nav-button,
+.sidebar.collapsed .tool-button {
+  padding: 0.8rem 0.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.nav-button {
+  color: vars.$text-white;
+}
+
+.tool-button {
+  color: vars.$text-gray;
+}
+
+.nav-button:hover {
+  background: vars.$hacker-green;
+  color: vars.$midnight-darker;
+  border-color: vars.$hacker-green;
+  box-shadow: 0 0 15px vars.$shadow-color;
+}
+
+.nav-button.active {
+  background: vars.$hacker-green;
+  color: vars.$midnight-darker;
+  border-color: vars.$hacker-green;
+  box-shadow: 0 0 15px vars.$shadow-color;
+}
+
+.tool-button:hover {
+  background: vars.$midnight-lighter;
+  color: vars.$text-white;
+  border-color: vars.$hacker-green-dim;
+}
+
+.tool-button.active {
+  background: vars.$midnight-lighter;
+  color: vars.$text-white;
+  border-color: vars.$hacker-green-dim;
+}
+
+/* Mobile tweaks: keep sidebar visible but collapse */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;          /* stays on screen */
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1000;
+    width: vars.$sidebar-width; /* default full width */
+  }
+
+  .sidebar.collapsed {
+    width: vars.$sidebar-collapsed-width; /* only icons */
+  }
+
+  .sidebar-section .sidebar-title {
+    display: block; /* show titles when expanded */
+  }
+
+  .sidebar.collapsed .sidebar-title {
+    display: none;  /* hide titles when collapsed */
+  }
+}

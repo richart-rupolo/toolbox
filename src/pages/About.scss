@@ -1,0 +1,76 @@
+@use '@/assets/scss/variables' as vars;
+
+.page {
+  padding: vars.$spacing-lg;
+
+  .page-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: vars.$text-white;
+  }
+
+  .page-description {
+    margin-bottom: vars.$spacing-lg;
+    color: vars.$text-gray;
+  }
+
+  .tool-container {
+    background: vars.$midnight-darker;
+    padding: vars.$spacing-md;
+    border-radius: 6px;
+    border: 1px solid vars.$border-color;
+
+    .tool-header {
+      margin-bottom: vars.$spacing-md;
+
+      .tool-title {
+        font-size: 1.5rem;
+        color: vars.$hacker-green;
+        margin-bottom: 0.5rem;
+      }
+
+      .tool-description {
+        font-size: 0.9rem;
+        color: vars.$text-light-gray;
+      }
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+
+      &.three-cols {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        margin-bottom: vars.$spacing-lg;
+      }
+
+      &.techs {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: vars.$spacing-md;
+      }
+
+      .card {
+        background: vars.$midnight-darker;
+        padding: vars.$spacing-lg;
+        border-radius: 6px;
+        border: 1px solid vars.$border-color;
+
+        h3 {
+          color: vars.$hacker-green;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+          color: vars.$text-light-gray;
+
+          &.bold {
+            color: vars.$text-white;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}

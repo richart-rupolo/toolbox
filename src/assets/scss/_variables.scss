@@ -1,0 +1,36 @@
+// Cores e variáveis
+$midnight-bg: #0a0a0f;
+$midnight-darker: #050508;
+$midnight-lighter: #1a1a2e;
+$hacker-green: #00ff41;
+$hacker-green-dim: #00cc33;
+$text-white: #ffffff;
+$text-gray: #e0e0e0;
+$text-light-gray: #b0b0b0;
+$border-color: #2a2a3e;
+$shadow-color: rgba(0, 255, 65, 0.1);
+
+// Layout
+$sidebar-width: 280px;
+$sidebar-collapsed-width: 60px;
+
+// Tipografia
+$font-mono: 'Courier New', 'Monaco', 'Consolas', monospace;
+$font-primary: 'Courier New', 'Monaco', 'Consolas', monospace;
+$font-heading: 'Courier New', 'Monaco', 'Consolas', monospace;
+
+$primary-color: $hacker-green;
+
+$background-color : $midnight-lighter;
+$text-color: $text-white;
+
+
+// Espaçamento
+$spacing-xs: 0.3rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+
+$border-radius-sm: 4px;
+$border-radius-md: 8px;

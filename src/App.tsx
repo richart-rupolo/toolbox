@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import './App.css'
+import './assets/scss/main.scss'
 import Sidebar from './components/Sidebar/Sidebar'
 import LanguageSelector from './components/LanguageSelector/LanguageSelector'
 import Home, { HomePage } from './pages/Home'

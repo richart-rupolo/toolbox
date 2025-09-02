@@ -1,0 +1,24 @@
+@use 'variables' as vars;
+
+// Flexbox center
+@mixin flex-center($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// Card shadow
+@mixin card-shadow {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: vars.$spacing-md; // ou criar $border-radius-md em variables
+}
+
+// Responsive container
+@mixin container($max-width: 1200px) {
+  width: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 vars.$spacing-md;
+}

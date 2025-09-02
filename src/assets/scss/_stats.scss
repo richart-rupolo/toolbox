@@ -1,0 +1,18 @@
+@use 'variables' as vars;
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: vars.$midnight-darker;
+  border-radius: 4px;
+  border: 1px solid vars.$border-color;
+}
+
+.stat-label {
+  color: vars.$hacker-green-dim;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}

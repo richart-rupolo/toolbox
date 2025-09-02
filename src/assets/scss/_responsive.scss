@@ -1,0 +1,41 @@
+@use 'variables' as vars;
+
+// Tablet layout
+@media (max-width: 768px) {
+  .header {
+    padding: vars.$spacing-md;
+    flex-direction: column;
+    gap: vars.$spacing-md;
+    min-height: auto;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .main-container {
+    flex-direction: column;
+  }
+
+  .content {
+    padding: vars.$spacing-md;
+    margin-left: 0;
+  }
+}
+
+// Mobile layout
+@media (max-width: 480px) {
+  .language-selector {
+    gap: 0.3rem;
+  }
+
+  .flag-button {
+    min-width: 35px;
+    height: 35px;
+    padding: 0.3rem;
+  }
+
+  .flag {
+    font-size: 1rem;
+  }
+}

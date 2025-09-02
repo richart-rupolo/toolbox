@@ -1,0 +1,22 @@
+@use 'variables' as vars;
+
+button, .btn {
+  padding: vars.$spacing-sm vars.$spacing-md;
+  border-radius: vars.$border-radius-sm;
+  font-family: vars.$font-primary;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-default {
+  background: vars.$midnight-lighter;
+  color: vars.$text-white;
+  border: 1px solid vars.$border-color;
+}
+
+.btn-save {
+  background: vars.$hacker-green;
+  color: vars.$midnight-darker;
+  border: none;
+  font-weight: bold;
+}

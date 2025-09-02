@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import './Sidebar.css'
+import './Sidebar.scss'
 import type { Page } from '../../types/Page'
 import { HomePage } from '../../pages/Home'
 import { AboutPage } from '../../pages/About'
@@ -28,12 +28,12 @@ const Sidebar = ({ currentPage, onPageChange }: SidebarProps) => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  const toggleSidebar = () => {
-    if (isMobile) setOpen(!open)
-    else setCollapsed(!collapsed)
-  }
+const toggleSidebar = () => {
+  setCollapsed(!collapsed); // desktop + mobile usam o mesmo collapsed
+};
 
-  const sidebarClasses = `sidebar ${collapsed ? 'collapsed' : ''} ${open ? 'open' : ''}`
+const sidebarClasses = `sidebar ${collapsed ? 'collapsed' : ''}`;
+
 
   return (
     <aside className={sidebarClasses}>

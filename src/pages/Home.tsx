@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import './home.css'
+import './home.scss'
 import type { Page } from '../types/Page' // ✅ import como tipo
 
 export const HomePage: Page = { name: 'home' }

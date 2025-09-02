@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import Editor from '@monaco-editor/react'
-import Select from '../../../components/Select/Select' // seu Select estilizado
-import './TextEditor.css'
+import Select from '../../../components/Select/Select'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css' // estilo padrão do Quill
+import './TextEditor.scss'
 import * as utils from './TextUtils'
 import type { Page } from '../../../types/Page'
 
 export const TextEditorPage: Page = { name: 'text-editor' }
 
-// Ações disponíveis
+// Text transform actions
 const actions = [
   { label: 'Remove Double Spaces', fn: utils.removeDoubleSpaces },
   { label: 'Remove Extra Line Breaks', fn: utils.removeExtraLineBreaks },
@@ -28,26 +29,18 @@ const actions = [
   { label: 'JSON String', fn: utils.toJSONString },
 ]
 
-// Linguagens do Monaco
-const languages = [
-  { value: 'javascript', label: 'JavaScript' },
-  { value: 'typescript', label: 'TypeScript' },
-  { value: 'html', label: 'HTML' },
-  { value: 'css', label: 'CSS' },
-  { value: 'json', label: 'JSON' },
-  { value: 'plaintext', label: 'Plain Text' },
-]
-
 const TextEditor = () => {
   const { t } = useTranslation()
   const [text, setText] = useState('')
   const [fileName, setFileName] = useState('novo-arquivo.txt')
   const [selectedAction, setSelectedAction] = useState<typeof actions[0] | null>(actions[0])
-  const [language, setLanguage] = useState('javascript')
   const [fontSize, setFontSize] = useState(14)
 
   const handleApplyAction = () => {
-    if (selectedAction) setText(selectedAction.fn(text))
+    if (selectedAction) {
+      const plainText = text.replace(/<[^>]+>/g, '') // strip HTML before transform
+      setText(selectedAction.fn(plainText))
+    }
   }
 
   const handleSave = () => {
@@ -67,7 +60,7 @@ const TextEditor = () => {
       <h1 className="page-title">{t('i18n_textEditorTitle')}</h1>
 
       <div className="tool-container">
-        {/* Controles */}
+        {/* Controls */}
         <div className="controls" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
           <input
             type="text"
@@ -88,40 +81,27 @@ const TextEditor = () => {
             />
           </div>
 
-          <div style={{ minWidth: 150 }}>
-            <Select
-              value={languages.find(l => l.value === language)}
-              onChange={opt => setLanguage(opt?.value || 'javascript')}
-              options={languages}
-            />
-          </div>
-
-          <input
-            type="number"
-            value={fontSize}
-            min={10}
-            max={30}
-            onChange={e => setFontSize(Number(e.target.value))}
-            style={{ width: 70, padding: '0.3rem', borderRadius: 4, border: '1px solid #2a2a3e', background: '#050508', color: '#fff' }}
-          />
-
           <button onClick={handleApplyAction} className="btn btn-apply">Apply</button>
           <button onClick={handleSave} className="btn btn-save">Save</button>
         </div>
 
         {/* Editor */}
         <div className="editor-wrapper" style={{ marginTop: '1rem' }}>
-          <Editor
-            height="60vh"
-            language={language}
+          <ReactQuill
+          className='text-area-background'
+            theme="snow"
             value={text}
-            onChange={value => setText(value || '')}
-            options={{
-              fontSize,
-              minimap: { enabled: false },
-              automaticLayout: true,
-              scrollBeyondLastLine: false,
-              fontFamily: 'Courier New, monospace',
+            onChange={setText}
+            style={{ height: '60vh', background: '#1e1f22', color: '#fff', borderRadius: 8, fontSize }}
+            modules={{
+              toolbar: [
+                [{ header: [1, 2, 3, false] }],
+                ['bold', 'italic', 'underline', 'strike'],
+                [{ color: [] }, { background: [] }],
+                [{ align: [] }],
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                ['clean'],
+              ],
             }}
           />
         </div>

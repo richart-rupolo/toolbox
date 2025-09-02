@@ -1,0 +1,26 @@
+@use '@/assets/scss/variables' as vars;
+
+
+/* ===============================
+   Editor Rich Text (Quill)
+=================================*/
+.editor-wrapper {
+  margin-top: vars.$spacing-md;
+}
+
+.editor {
+  height: 40vh;
+  background: vars.$midnight-lighter;
+  color: vars.$text-white;
+  border-radius: vars.$border-radius-md;
+}
+
+.ql-container {
+  height: 40vh;
+}
+
+.ql-editor {
+  min-height: 40vh;
+  font-family: vars.$font-primary;
+  font-size: 0.9rem;
+}
