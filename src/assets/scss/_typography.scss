@@ -6,6 +6,22 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: vars.$spacing-md;
 }
 
+h1 {
+  font-size: 3.2em;
+  line-height: vars.$line-height-h1;
+}
+
+a {
+  font-weight: vars.$font-weight-medium;
+  color: vars.$primary-color;
+  text-decoration: inherit;
+
+  &:hover {
+    color: vars.$primary-color-hover;
+  }
+}
+
+
 p {
   line-height: 1.6;
   margin-bottom: vars.$spacing-md;
@@ -14,5 +30,21 @@ p {
 small {
   font-size: 0.8rem;
   // SCSS não consegue usar color-mix com var(), então usamos variável SCSS
-  color: color-mix(in srgb, black 20%, vars.$text-color);
+  color: color-mix(in srgb, black 20%, vars.$primary-color);
 }
+
+
+// Fontes
+.font-mono { font-family: vars.$font-mono; }
+.font-primary { font-family: vars.$font-primary; }
+.font-heading { font-family: vars.$font-heading; }
+
+// Tamanhos e pesos (exemplo básico, você pode expandir)
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-md { font-size: 1rem; }
+.text-lg { font-size: 1.25rem; }
+.text-xl { font-size: 1.5rem; }
+
+.font-bold { font-weight: bold; }
+.font-normal { font-weight: normal; }

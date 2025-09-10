@@ -1,5 +1,18 @@
 @use 'variables' as vars;
 
+:root {
+  font-family: vars.$font-primary;
+  line-height: vars.$line-height-base;
+  font-weight: vars.$font-weight-normal;
+  color-scheme: light dark;
+  color: vars.$text-color-dark;
+  background-color: vars.$background-color-dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* Reset básico */
 * {
   margin: 0;
@@ -13,6 +26,11 @@ html, body {
 }
 
 body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
   background-color: vars.$midnight-bg;
   color: vars.$text-white;
   font-family: vars.$font-mono;
@@ -26,3 +44,5 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+

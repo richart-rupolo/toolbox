@@ -58,5 +58,20 @@
   "i18n_minifyTip": "Minificar: Remove espaços e quebras de linha para reduzir o tamanho",
   "i18n_validateTip": "Validar: Verifica se o JSON está sintaticamente correto",
   "i18n_exampleTip": "Use o botão \"Exemplo\" para ver um JSON de demonstração",
-  "i18n_toggleSidebar": "Alternar Sidebar"
+  "i18n_toggleSidebar": "Alternar Sidebar",
+  "i18n_removeDoubleSpaces": "🔧 Remover espaços duplos",
+  "i18n_removeExtraLineBreaks": "🔧 Remover quebras de linha extras",
+  "i18n_tabsToSpaces": "🔧 Tabulações → Espaços",
+  "i18n_uppercase": "🔠 MAIÚSCULAS",
+  "i18n_lowercase": "🔡 minúsculas",
+  "i18n_capitalized": "🔠 Com inicial maiúscula",
+  "i18n_removeAccents": "🔧 Remover acentos",
+  "i18n_trimLines": "🔧 Aparar linhas",
+  "i18n_sortLinesAZ": "🔧 Ordenar linhas A-Z",
+  "i18n_removeDuplicateLines": "🔧 Remover linhas duplicadas",
+  "i18n_reverseText": "🔁 Inverter texto",
+  "i18n_compressOneLine": "📏 Comprimir em uma linha",
+  "i18n_extractNumbers": "🔢 Extrair números",
+  "i18n_extractEmails": "📧 Extrair emails",
+  "i18n_jsonString": "🔧 String JSON"
 }

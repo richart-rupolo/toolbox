@@ -1,0 +1,7 @@
+@use 'variables' as vars;
+
+.radius-sm { border-radius: vars.$border-radius-sm; }
+.radius-md { border-radius: vars.$border-radius-md; }
+
+// Exemplo de borda completa
+.border { border: 1px solid vars.$border-color; }

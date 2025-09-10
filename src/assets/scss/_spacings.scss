@@ -1,0 +1,24 @@
+@use 'variables' as vars;
+
+$spacings: (
+  0_1: 0.1rem,
+  0_2: 0.2rem,
+  0_3: 0.3rem,
+  0_4: 0.4rem,
+  0_5: 0.5rem,
+  1: 1rem,
+  2: 2rem,
+  3: 3rem
+);
+
+@each $key, $value in $spacings {
+  // Padding
+  .spacing-p-#{$key} { padding: $value; }
+  .spacing-px-#{$key} { padding-left: $value; padding-right: $value; }
+  .spacing-py-#{$key} { padding-top: $value; padding-bottom: $value; }
+
+  // Margin
+  .spacing-m-#{$key} { margin: $value; }
+  .spacing-mx-#{$key} { margin-left: $value; margin-right: $value; }
+  .spacing-my-#{$key} { margin-top: $value; margin-bottom: $value; }
+}

@@ -1,36 +1,49 @@
-// Cores e variáveis
+// 🎨 Cores
 $midnight-bg: #0a0a0f;
 $midnight-darker: #050508;
 $midnight-lighter: #1a1a2e;
+
 $hacker-green: #00ff41;
 $hacker-green-dim: #00cc33;
+
 $text-white: #ffffff;
 $text-gray: #e0e0e0;
 $text-light-gray: #b0b0b0;
+
 $border-color: #2a2a3e;
 $shadow-color: rgba(0, 255, 65, 0.1);
 
-// Layout
+$primary-color: $hacker-green;
+$primary-color-hover: $hacker-green-dim;
+
+$background-color-dark: $midnight-lighter;
+$background-color-light: #ffffff;
+
+$text-color-dark: $text-white;
+$text-color-light: #213547;
+
+// 🔤 Tipografia
+$font-primary: 'Courier New', 'Monaco', 'Consolas', monospace;
+$font-heading: $font-primary;
+$font-mono: $font-primary;
+
+$line-height-base: 1.5;
+$line-height-h1: 1.1;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+
+// 📏 Layout
 $sidebar-width: 280px;
 $sidebar-collapsed-width: 60px;
 
-// Tipografia
-$font-mono: 'Courier New', 'Monaco', 'Consolas', monospace;
-$font-primary: 'Courier New', 'Monaco', 'Consolas', monospace;
-$font-heading: 'Courier New', 'Monaco', 'Consolas', monospace;
-
-$primary-color: $hacker-green;
-
-$background-color : $midnight-lighter;
-$text-color: $text-white;
-
-
-// Espaçamento
+// 📐 Espaçamento
 $spacing-xs: 0.3rem;
 $spacing-sm: 0.5rem;
 $spacing-md: 1rem;
 $spacing-lg: 2rem;
 $spacing-xl: 3rem;
 
+// ⭕ Bordas
 $border-radius-sm: 4px;
 $border-radius-md: 8px;
