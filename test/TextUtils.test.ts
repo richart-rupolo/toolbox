@@ -1,4 +1,4 @@
-import * as textUtils from '../src/pages/Tools/TextEditor/TextUtils'
+import * as textUtils from '../src/pages/tools/text-editor/TextUtils'
 
 describe('Text Utils', () => {
   beforeAll(() => {

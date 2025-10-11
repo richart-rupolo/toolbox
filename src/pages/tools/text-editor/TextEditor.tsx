@@ -116,7 +116,7 @@ const formats = [
             theme="snow"
             modules={modules}
             formats={formats}
-            style={{ height: '60vh', background: '#1e1f22', color: '#fff', borderRadius: 8 }}
+            style={{ height: '45vh', background: '#1e1f22', color: '#fff', borderRadius: 8 }}
           />
         </div>
       </div>

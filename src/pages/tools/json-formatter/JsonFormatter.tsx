@@ -1,7 +1,9 @@
+// JsonFormatter.tsx
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import type { Page } from '../../types/Page';
-import './JsonFormatter.scss'; // ✅ importa SCSS
+import type { Page } from '../../../types/Page';
+import * as JsonUtils from './jsonFormatterUtils'; 
+import './JsonFormatter.scss';
 
 export const JsonFormatterPage: Page = { name: 'json-formatter' };
 
@@ -19,11 +21,10 @@ const JsonFormatter = () => {
     setFormattedJson('');
   };
 
-  const formatJson = () => {
+  const handleFormat = () => {
     try {
-      if (!inputJson.trim()) throw new Error('Por favor, insira um JSON para formatar.');
-      const parsed = JSON.parse(inputJson);
-      setFormattedJson(JSON.stringify(parsed, null, 2));
+      const result = JsonUtils.formatJsonString(inputJson);
+      setFormattedJson(result);
       setIsValid(true);
       setErrorMessage('');
     } catch (error) {
@@ -33,11 +34,10 @@ const JsonFormatter = () => {
     }
   };
 
-  const minifyJson = () => {
+  const handleMinify = () => {
     try {
-      if (!inputJson.trim()) throw new Error('Por favor, insira um JSON para minificar.');
-      const parsed = JSON.parse(inputJson);
-      setFormattedJson(JSON.stringify(parsed));
+      const result = JsonUtils.minifyJsonString(inputJson);
+      setFormattedJson(result);
       setIsValid(true);
       setErrorMessage('');
     } catch (error) {
@@ -47,31 +47,32 @@ const JsonFormatter = () => {
     }
   };
 
-  const validateJson = () => {
+  const handleValidate = () => {
     try {
-      if (!inputJson.trim()) throw new Error('Por favor, insira um JSON para validar.');
-      JSON.parse(inputJson);
-      setIsValid(true);
-      setErrorMessage('JSON válido! ✅');
+      const result = JsonUtils.validateJsonString(inputJson);
+      setIsValid(result.valid);
+      setErrorMessage(result.message);
       setFormattedJson('');
     } catch (error) {
       setIsValid(false);
-      setErrorMessage(`JSON inválido: ${error instanceof Error ? error.message : 'Formato incorreto'}`);
+      setErrorMessage(error instanceof Error ? error.message : 'Formato inválido');
       setFormattedJson('');
     }
+  };
+
+  const handleSampleJson = () => {
+    setInputJson(JsonUtils.getSampleJson());
+    setIsValid(null);
+    setErrorMessage('');
+    setFormattedJson('');
   };
 
   const handleCopy = () => formattedJson && navigator.clipboard.writeText(formattedJson);
-  const handleClear = () => { setInputJson(''); setFormattedJson(''); setIsValid(null); setErrorMessage(''); };
-  const handleSampleJson = () => {
-    const sample = `{
-  "name": "Exemplo",
-  "version": "1.0.0",
-  "description": "JSON de exemplo",
-  "features": ["formatação","validação","minificação"],
-  "metadata": {"author": "Toolbox","created": "2024"}
-}`;
-    setInputJson(sample); setIsValid(null); setErrorMessage(''); setFormattedJson('');
+  const handleClear = () => {
+    setInputJson('');
+    setFormattedJson('');
+    setIsValid(null);
+    setErrorMessage('');
   };
 
   return (
@@ -86,9 +87,9 @@ const JsonFormatter = () => {
         </div>
 
         <div className="controls">
-          <button className="primary" onClick={formatJson}>{t('i18n_format')}</button>
-          <button className="secondary" onClick={minifyJson}>{t('i18n_minify')}</button>
-          <button className="secondary" onClick={validateJson}>{t('i18n_validate')}</button>
+          <button className="primary" onClick={handleFormat}>{t('i18n_format')}</button>
+          <button className="secondary" onClick={handleMinify}>{t('i18n_minify')}</button>
+          <button className="secondary" onClick={handleValidate}>{t('i18n_validate')}</button>
           <button className="secondary" onClick={handleSampleJson}>{t('i18n_example')}</button>
           <button className="secondary" onClick={handleCopy} disabled={!formattedJson}>{t('i18n_copy')}</button>
           <button className="secondary" onClick={handleClear}>{t('i18n_clear')}</button>

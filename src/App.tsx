@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import './assets/scss/main.scss'
-import Sidebar from './components/Sidebar/Sidebar'
-import LanguageSelector from './components/LanguageSelector/LanguageSelector'
+import Sidebar from './components/sidebar/Sidebar'
+import LanguageSelector from './components/language-selector/LanguageSelector'
 import Home, { HomePage } from './pages/Home'
 import About, { AboutPage } from './pages/About'
-import TextEditor, { TextEditorPage } from './pages/Tools/TextEditor/TextEditor'
-import JsonFormatter, { JsonFormatterPage } from './pages/Tools/JsonFormatter'
+import TextEditor, { TextEditorPage } from './pages/tools/text-editor/TextEditor'
+import JsonFormatter, { JsonFormatterPage } from './pages/tools/json-formatter/JsonFormatter'
 import type { Page } from './types/Page' // Page agora é um objeto { name: string }
 
 function App() {

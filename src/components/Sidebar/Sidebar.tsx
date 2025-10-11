@@ -4,8 +4,8 @@ import './Sidebar.scss'
 import type { Page } from '../../types/Page'
 import { HomePage } from '../../pages/Home'
 import { AboutPage } from '../../pages/About'
-import { TextEditorPage } from '../../pages/Tools/TextEditor/TextEditor'
-import { JsonFormatterPage } from '../../pages/Tools/JsonFormatter'
+import { TextEditorPage } from '../../pages/tools/text-editor/TextEditor'
+import { JsonFormatterPage } from '../../pages/tools/json-formatter/JsonFormatter'
 
 interface SidebarProps {
   currentPage: Page
