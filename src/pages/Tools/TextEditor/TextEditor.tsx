@@ -104,7 +104,7 @@ const formats = [
             />
           </div>
 
-          <button onClick={handleApplyAction} className="btn btn-apply">Apply</button>
+          <button onClick={handleApplyAction} className="btn btn-default">Apply</button>
           <button onClick={handleSave} className="btn btn-save">Save</button>
         </div>
 

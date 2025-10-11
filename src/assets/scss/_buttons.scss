@@ -8,7 +8,7 @@
 }
 
 .btn-save {
-  background: vars.$hacker-green;
+  background: vars.$hacker-green-dim;
   color: vars.$midnight-darker;
   border: none;
   font-weight: bold;
@@ -27,7 +27,7 @@ button {
   transition: border-color 0.25s;
 
   &:hover {
-    border-color: vars.$primary-color;
+    border-color: vars.$hacker-green-dim;
   }
 
   &:focus,
