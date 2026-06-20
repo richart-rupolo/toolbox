@@ -1,58 +1,63 @@
 @use 'variables' as vars;
 
 .header {
-  background: vars.$midnight-darker;
-  border-bottom: 2px solid vars.$hacker-green;
-  padding: vars.$spacing-md vars.$spacing-lg;
-  box-shadow: 0 4px 20px vars.$shadow-color;
+  background: vars.$color-bg-surface;
+  border-bottom: 2px solid vars.$color-accent-primary;
+  padding: vars.$space-md vars.$space-xl;
+  box-shadow: 0 0.25rem 1.25rem vars.$shadow-color;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 80px;
+  min-height: vars.$header-min-height;
   flex-shrink: 0;
 }
 
 .title {
-  color: vars.$hacker-green;
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-shadow: 0 0 10px vars.$hacker-green;
-  letter-spacing: 3px;
+  color: vars.$color-accent-primary;
+  font-size: vars.$font-size-3xl;
+  font-weight: vars.$font-weight-bold;
+  text-shadow: 0 0 0.625rem vars.$color-accent-primary;
+  letter-spacing: 0.1875rem;
 }
 
 .language-selector {
   display: flex;
-  gap: 0.5rem;
+  gap: vars.$space-xs;
   align-items: center;
 }
 
 .flag-button {
   background: transparent;
-  border: 2px solid vars.$border-color;
-  border-radius: 8px;
-  padding: vars.$spacing-sm;
+  border: 2px solid vars.$color-border-default;
+  border-radius: vars.$radius-md;
+  padding: vars.$space-sm;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition:
+    border-color vars.$transition-slow,
+    box-shadow vars.$transition-slow,
+    transform vars.$transition-slow,
+    background-color vars.$transition-slow,
+    color vars.$transition-slow;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 40px;
-  height: 40px;
+  min-width: vars.$flag-control-size;
+  height: vars.$flag-control-size;
 
   &:hover {
-    border-color: vars.$hacker-green;
-    box-shadow: 0 0 10px vars.$shadow-color;
+    border-color: vars.$color-accent-primary;
+    box-shadow: 0 0 0.625rem vars.$shadow-color;
     transform: scale(1.05);
   }
 
   &.active {
-    border-color: vars.$hacker-green;
-    background: vars.$hacker-green;
-    color: vars.$midnight-darker;
-    box-shadow: 0 0 15px vars.$shadow-color;
+    border-color: vars.$color-accent-primary;
+    background: vars.$color-accent-primary;
+    color: vars.$color-bg-surface;
+    box-shadow: 0 0 0.9375rem vars.$shadow-color;
   }
 }
 
 .flag {
-  font-size: 1.2rem;
+  font-size: vars.$font-size-lg;
 }

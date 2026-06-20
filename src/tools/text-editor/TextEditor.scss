@@ -1,0 +1,26 @@
+@use '@/assets/scss/variables' as vars;
+
+.text-editor-file-name {
+  min-width: 13.75rem;
+}
+
+.text-editor-select {
+  min-width: 13.75rem;
+}
+
+.text-editor-editor {
+  margin-top: vars.$space-md;
+
+  .ql-container {
+    min-height: 45vh;
+    background: vars.$color-bg-elevated;
+    color: vars.$color-text-primary;
+    border-radius: vars.$radius-md;
+  }
+
+  .ql-editor {
+    min-height: 40vh;
+    font-family: vars.$font-primary;
+    font-size: vars.$font-size-sm;
+  }
+}

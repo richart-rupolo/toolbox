@@ -1,0 +1,4 @@
+interface:
+  display_name: "React + SCSS Refactor"
+  short_description: "Refactor Toolbox front-end code"
+  default_prompt: "Use $react-scss-refactor to clean up existing Toolbox React and SCSS code without drifting from the project standards."

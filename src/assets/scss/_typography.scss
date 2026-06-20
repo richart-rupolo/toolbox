@@ -1,9 +1,14 @@
 @use 'variables' as vars;
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: vars.$font-heading;
   color: vars.$primary-color;
-  margin-bottom: vars.$spacing-md;
+  margin-bottom: vars.$space-md;
 }
 
 h1 {
@@ -21,30 +26,52 @@ a {
   }
 }
 
-
 p {
   line-height: 1.6;
-  margin-bottom: vars.$spacing-md;
+  margin-bottom: vars.$space-md;
 }
 
 small {
-  font-size: 0.8rem;
-  // SCSS não consegue usar color-mix com var(), então usamos variável SCSS
+  font-size: vars.$font-size-xs;
   color: color-mix(in srgb, black 20%, vars.$primary-color);
 }
 
+.font-mono {
+  font-family: vars.$font-mono;
+}
 
-// Fontes
-.font-mono { font-family: vars.$font-mono; }
-.font-primary { font-family: vars.$font-primary; }
-.font-heading { font-family: vars.$font-heading; }
+.font-primary {
+  font-family: vars.$font-primary;
+}
 
-// Tamanhos e pesos (exemplo básico, você pode expandir)
-.text-xs { font-size: 0.75rem; }
-.text-sm { font-size: 0.875rem; }
-.text-md { font-size: 1rem; }
-.text-lg { font-size: 1.25rem; }
-.text-xl { font-size: 1.5rem; }
+.font-heading {
+  font-family: vars.$font-heading;
+}
 
-.font-bold { font-weight: bold; }
-.font-normal { font-weight: normal; }
+.text-xs {
+  font-size: vars.$font-size-xs;
+}
+
+.text-sm {
+  font-size: vars.$font-size-sm;
+}
+
+.text-md {
+  font-size: vars.$font-size-md;
+}
+
+.text-lg {
+  font-size: 1.25rem;
+}
+
+.text-xl {
+  font-size: vars.$font-size-xl;
+}
+
+.font-bold {
+  font-weight: vars.$font-weight-bold;
+}
+
+.font-normal {
+  font-weight: vars.$font-weight-normal;
+}

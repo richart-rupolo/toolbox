@@ -1,0 +1,144 @@
+@use '@/assets/scss/variables' as vars;
+
+.sidebar {
+  width: vars.$sidebar-width;
+  background: vars.$color-bg-surface;
+  border-right: 2px solid vars.$color-border-default;
+  padding: vars.$space-md;
+  display: flex;
+  flex-direction: column;
+  gap: vars.$space-md;
+  transition: width vars.$transition-slow;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.sidebar.collapsed {
+  width: vars.$sidebar-collapsed-width;
+  padding: vars.$space-md vars.$space-xs;
+}
+
+.sidebar-section {
+  border-bottom: 1px solid vars.$color-border-default;
+  padding-bottom: vars.$space-md;
+}
+
+.sidebar-section:last-child {
+  border-bottom: none;
+}
+
+.sidebar-title {
+  color: vars.$color-accent-primary;
+  font-size: vars.$font-size-lg;
+  font-weight: vars.$font-weight-bold;
+  margin-bottom: vars.$space-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.0625rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar.collapsed .sidebar-title {
+  display: none;
+}
+
+.toggle-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: vars.$space-md;
+}
+
+.sidebar-toggle {
+  background: vars.$color-accent-primary;
+  color: vars.$color-bg-surface;
+  border: none;
+  border-radius: vars.$radius-xs;
+  padding: vars.$space-2xs vars.$space-sm;
+  cursor: pointer;
+  font-size: vars.$font-size-md;
+  transition:
+    background-color vars.$transition-slow,
+    transform vars.$transition-slow;
+}
+
+.sidebar-toggle:hover {
+  background: vars.$color-accent-primary-hover;
+}
+
+.nav-button,
+.tool-button {
+  width: 100%;
+  padding: vars.$space-sm vars.$space-md;
+  display: inline-flex;
+  align-items: center;
+  gap: vars.$space-sm;
+  background: transparent;
+  border: 1px solid vars.$color-border-default;
+  font-family: vars.$font-primary;
+  font-size: vars.$font-size-sm;
+  cursor: pointer;
+  transition:
+    background-color vars.$transition-slow,
+    color vars.$transition-slow,
+    border-color vars.$transition-slow,
+    box-shadow vars.$transition-slow;
+  text-align: left;
+  border-radius: vars.$radius-xs;
+  margin-bottom: vars.$space-xs;
+  overflow: hidden;
+}
+
+.sidebar.collapsed .nav-button,
+.sidebar.collapsed .tool-button {
+  padding: vars.$space-sm vars.$space-xs;
+  justify-content: center;
+}
+
+.sidebar-button-icon {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+}
+
+.sidebar-button-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar.collapsed .sidebar-button-label {
+  display: none;
+}
+
+.nav-button {
+  color: vars.$color-text-primary;
+}
+
+.tool-button {
+  color: vars.$color-text-secondary;
+}
+
+.nav-button:hover,
+.nav-button.active {
+  background: vars.$color-accent-primary;
+  color: vars.$color-bg-surface;
+  border-color: vars.$color-accent-primary;
+  box-shadow: 0 0 0.9375rem vars.$shadow-color;
+}
+
+.tool-button:hover,
+.tool-button.active {
+  background: vars.$color-bg-elevated;
+  color: vars.$color-text-primary;
+  border-color: vars.$color-accent-primary-hover;
+}
+
+@media (max-width: vars.$breakpoint-tablet) {
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid vars.$color-border-default;
+  }
+}

@@ -1,8 +1,7 @@
-import * as textUtils from '../src/pages/tools/text-editor/TextUtils'
+﻿import * as textUtils from '../src/tools/text-editor/textUtils'
 
 describe('Text Utils', () => {
   beforeAll(() => {
-    // Mock simples de document para ambientes Node
     global.document = {
       createElement: () => ({
         innerHTML: '',
@@ -16,7 +15,6 @@ describe('Text Utils', () => {
     } as unknown as Document
   })
 
-  // 🔹 Espaços e quebras
   test('removeDoubleSpaces', () => {
     expect(textUtils.removeDoubleSpaces('a  b   c')).toBe('a b c')
     expect(textUtils.removeDoubleSpaces('    ')).toBe('')
@@ -30,7 +28,6 @@ describe('Text Utils', () => {
     expect(textUtils.removeTabs('a\tb\tc')).toBe('a    b    c')
   })
 
-  // 🔹 Casing
   test('toUpperCase', () => {
     expect(textUtils.toUpperCase('abc')).toBe('ABC')
   })
@@ -44,16 +41,14 @@ describe('Text Utils', () => {
     expect(textUtils.capitalizeText('')).toBe('')
   })
 
-  // 🔹 Formatação / acentuação
   test('removeFormatting', () => {
     expect(textUtils.removeFormatting('<b>Hello</b> <i>World</i>')).toBe('Hello World')
   })
 
   test('removeAccents', () => {
-    expect(textUtils.removeAccents('áéíóú ç ÃÕ')).toBe('aeiou c AO')
+    expect(textUtils.removeAccents('a\u00E7\u00E3o')).toBe('acao')
   })
 
-  // 🔹 Linhas
   test('trimLines', () => {
     expect(textUtils.trimLines('  a  \n b ')).toBe('a\nb')
   })
@@ -74,7 +69,6 @@ describe('Text Utils', () => {
     expect(textUtils.joinLines('a\nb\nc', ',')).toBe('a,b,c')
   })
 
-  // 🔹 Manipulação geral
   test('reverseText', () => {
     expect(textUtils.reverseText('abc')).toBe('cba')
   })
@@ -83,19 +77,14 @@ describe('Text Utils', () => {
     expect(textUtils.compressOneLine('a\n b   c')).toBe('a b c')
   })
 
-  // 🔹 Extrações e substituições
   test('extractNumbers', () => {
     expect(textUtils.extractNumbers('abc123def456')).toBe('123 456')
-    expect(textUtils.extractNumbers('sem número')).toBe('')
+    expect(textUtils.extractNumbers('sem numero')).toBe('')
   })
 
   test('extractEmails', () => {
-    // Corrigido para usar regex global /gi
-    const fixedExtractEmails = (txt: string) =>
-      txt.match(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi)?.join(', ') || ''
-
-    expect(fixedExtractEmails('me@test.com other@mail.com')).toBe('me@test.com, other@mail.com')
-    expect(fixedExtractEmails('nenhum email aqui')).toBe('')
+    expect(textUtils.extractEmails('me@test.com other@mail.com')).toBe('me@test.com, other@mail.com')
+    expect(textUtils.extractEmails('nenhum email aqui')).toBe('')
   })
 
   test('simpleFindReplace', () => {

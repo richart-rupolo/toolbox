@@ -3,7 +3,7 @@
 .app {
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(135deg, vars.$midnight-bg 0%, vars.$midnight-darker 100%);
+  background: linear-gradient(135deg, vars.$color-bg-canvas 0%, vars.$color-bg-surface 100%);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -17,44 +17,116 @@
 
 .content {
   flex: 1;
-  padding: vars.$spacing-lg;
-  background: vars.$midnight-bg;
+  padding: vars.$space-xl;
+  background: vars.$color-bg-canvas;
   overflow-y: auto;
   position: relative;
 }
 
 .page {
-  padding: vars.$spacing-lg;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: vars.$space-xl;
 }
 
 .page-title {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  color: vars.$text-white;
+  font-size: vars.$font-size-2xl;
+  margin-bottom: vars.$space-xs;
+  color: vars.$color-text-primary;
 }
 
 .page-description {
-  margin-bottom: vars.$spacing-lg;
-  color: vars.$text-gray;
+  margin-bottom: vars.$space-xl;
+  color: vars.$color-text-secondary;
 }
 
 .tool-container {
-  background: vars.$midnight-darker;
-  padding: vars.$spacing-md;
-  border-radius: 8px;
-  border: 1px solid vars.$border-color;
+  background: vars.$color-bg-surface;
+  padding: vars.$space-md;
+  border-radius: vars.$radius-md;
+  border: 1px solid vars.$color-border-default;
 }
 
 .tool-header {
-  margin-bottom: vars.$spacing-md;
+  margin-bottom: vars.$space-md;
 }
 
 .tool-title {
-  font-size: 1.5rem;
-  color: vars.$text-white;
+  font-size: vars.$font-size-xl;
+  color: vars.$color-text-primary;
+  margin-bottom: vars.$space-xs;
 }
 
 .tool-description {
-  font-size: 0.95rem;
-  color: vars.$text-gray;
+  font-size: vars.$font-size-md;
+  color: vars.$color-text-secondary;
+}
+
+.surface-grid {
+  display: grid;
+  gap: vars.$space-lg;
+}
+
+.surface-card {
+  background: vars.$color-bg-surface;
+  padding: vars.$space-lg;
+  border-radius: vars.$radius-sm;
+  border: 1px solid vars.$color-border-default;
+}
+
+.surface-card--interactive {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform vars.$transition-base,
+    box-shadow vars.$transition-base,
+    border-color vars.$transition-base,
+    background-color vars.$transition-base;
+}
+
+.surface-card--interactive:hover {
+  transform: translateY(-0.25rem);
+  border-color: vars.$color-accent-primary-hover;
+  box-shadow: vars.$shadow-elevated;
+}
+
+.surface-card--interactive:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px vars.$color-bg-canvas, 0 0 0 4px vars.$color-accent-primary;
+}
+
+.surface-card__title {
+  color: vars.$color-accent-primary;
+  margin-bottom: vars.$space-xs;
+  font-size: vars.$font-size-xl;
+}
+
+.surface-card__description {
+  color: vars.$color-text-muted;
+  margin-bottom: 0;
+  font-size: vars.$font-size-sm;
+}
+
+.surface-card__description + * {
+  margin-top: vars.$space-md;
+}
+
+.status-message {
+  padding: vars.$space-sm vars.$space-md;
+  margin-bottom: vars.$space-md;
+  border-radius: vars.$radius-xs;
+  border: 1px solid;
+}
+
+.status-message--success {
+  background: vars.$color-status-success-bg;
+  border-color: vars.$color-status-success;
+  color: vars.$color-status-success;
+}
+
+.status-message--danger {
+  background: vars.$color-status-danger-bg;
+  border-color: vars.$color-status-danger;
+  color: vars.$color-status-danger;
 }

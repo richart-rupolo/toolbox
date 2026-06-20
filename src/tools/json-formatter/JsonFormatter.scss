@@ -1,0 +1,50 @@
+@use '@/assets/scss/variables' as vars;
+
+.json-formatter-grid {
+  display: grid;
+  gap: vars.$space-lg;
+  margin-bottom: vars.$space-md;
+  grid-template-columns: 1fr 1fr;
+}
+
+.json-formatter-panel {
+  padding: vars.$space-md;
+}
+
+.json-formatter-panel .surface-card__title {
+  font-size: vars.$font-size-lg;
+}
+
+.json-formatter-textarea {
+  width: 100%;
+  min-height: 18.75rem;
+  background: vars.$color-bg-surface;
+  border: 1px solid vars.$color-border-default;
+  color: vars.$color-text-primary;
+  padding: vars.$space-md;
+  border-radius: vars.$radius-xs;
+  font-family: vars.$font-primary;
+  font-size: vars.$font-size-sm;
+  line-height: vars.$line-height-base;
+  resize: vertical;
+}
+
+.json-formatter-tips {
+  padding: vars.$space-md;
+}
+
+.json-formatter-tips .surface-card__title {
+  font-size: vars.$font-size-lg;
+}
+
+.json-formatter-tips-list {
+  color: vars.$color-text-muted;
+  font-size: vars.$font-size-sm;
+  line-height: 1.6;
+}
+
+@media (max-width: 56.25rem) {
+  .json-formatter-grid {
+    grid-template-columns: 1fr;
+  }
+}

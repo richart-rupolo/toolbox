@@ -1,29 +1,44 @@
 @use 'variables' as vars;
-// 🎨 Cores de fundo
-.bg-midnight { background-color: vars.$midnight-bg; }
-.bg-midnight-darker { background-color: vars.$midnight-darker; }
-.bg-midnight-lighter { background-color: vars.$midnight-lighter; }
 
-// 🖋️ Cores de texto
-.text-white { color: vars.$text-white; }
-.text-gray { color: vars.$text-gray; }
-.text-light-gray { color: vars.$text-light-gray; }
+.bg-midnight {
+  background-color: vars.$color-bg-canvas;
+}
 
-// 🏗️ Bordas e sombras
-.border-color { border-color: vars.$border-color; }
-.shadow-color { box-shadow: 0 4px 6px vars.$shadow-color; }
+.bg-midnight-darker {
+  background-color: vars.$color-bg-surface;
+}
+
+.bg-midnight-lighter {
+  background-color: vars.$color-bg-elevated;
+}
+
+.text-white {
+  color: vars.$color-text-primary;
+}
+
+.text-gray {
+  color: vars.$color-text-secondary;
+}
+
+.text-light-gray {
+  color: vars.$color-text-muted;
+}
+
+.border-color {
+  border-color: vars.$color-border-default;
+}
+
+.shadow-color {
+  box-shadow: vars.$shadow-elevated;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
     color: vars.$text-color-light;
     background-color: vars.$background-color-light;
   }
+
   a:hover {
-    color: lighten(vars.$primary-color, 10%);
-  }
-  button {
-    background-color: vars.$text-light-gray;
-    color: vars.$midnight-bg;
+    color: vars.$primary-color-hover;
   }
 }
-

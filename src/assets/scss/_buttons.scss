@@ -1,46 +1,108 @@
 @use 'variables' as vars;
 
-
-.btn-default {
-  background: vars.$midnight-lighter;
-  color: vars.$text-white;
-  border: 1px solid vars.$border-color;
-}
-
-.btn-save {
-  background: vars.$hacker-green-dim;
-  color: vars.$midnight-darker;
-  border: none;
-  font-weight: bold;
-}
-
 button {
-  border-radius: vars.$border-radius-md;
-  border: 1px solid transparent;
-  padding: vars.$spacing-sm vars.$spacing-md;
-  font-size: 1em;
-  font-weight: vars.$font-weight-medium;
-  font-family: inherit;
-  background-color: vars.$midnight-darker;
-  color: vars.$text-color-dark;
-  cursor: pointer;
-  transition: border-color 0.25s;
-
-  &:hover {
-    border-color: vars.$hacker-green-dim;
-  }
-
-  &:focus,
-  &:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
-  }
+  font: inherit;
 }
 
-button, .btn {
-  padding: vars.$spacing-sm vars.$spacing-md;
-  border-radius: vars.$border-radius-sm;
+.button {
+  min-height: vars.$control-height-md;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: vars.$space-xs;
+  padding: vars.$space-sm vars.$space-md;
+  border-radius: vars.$radius-xs;
+  border: 1px solid vars.$color-border-default;
+  background: vars.$color-bg-elevated;
+  color: vars.$color-text-primary;
+  cursor: pointer;
   font-family: vars.$font-primary;
-  cursor: pointer;
-  font-size: 0.9rem;
+  font-size: vars.$font-size-sm;
+  font-weight: vars.$font-weight-medium;
+  line-height: 1;
+  transition:
+    background-color vars.$transition-base,
+    border-color vars.$transition-base,
+    color vars.$transition-base,
+    box-shadow vars.$transition-base,
+    transform vars.$transition-base;
+
+  &:hover:not(:disabled) {
+    border-color: vars.$color-accent-primary-hover;
+    background: vars.$color-bg-surface;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px vars.$color-bg-canvas, 0 0 0 4px vars.$color-accent-primary;
+  }
+
+  &:disabled {
+    background: vars.$color-bg-surface;
+    border-color: vars.$color-border-default;
+    color: vars.$color-text-muted;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
 }
 
+.button--primary {
+  background: vars.$color-accent-primary;
+  border-color: vars.$color-accent-primary;
+  color: vars.$color-bg-surface;
+
+  &:hover:not(:disabled) {
+    background: vars.$color-accent-primary-hover;
+    border-color: vars.$color-accent-primary-hover;
+  }
+}
+
+.button--secondary {
+  background: vars.$color-bg-elevated;
+  color: vars.$color-text-primary;
+}
+
+.button--success {
+  background: vars.$color-accent-primary-hover;
+  border-color: vars.$color-accent-primary-hover;
+  color: vars.$color-bg-surface;
+}
+
+.button--loading {
+  pointer-events: none;
+}
+
+.button__icon {
+  width: 1rem;
+  height: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.button__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 2;
+}
+
+.button--loading::after {
+  content: '';
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: button-spinner 0.75s linear infinite;
+}
+
+@keyframes button-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}

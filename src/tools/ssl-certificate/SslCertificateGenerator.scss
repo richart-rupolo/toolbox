@@ -1,0 +1,68 @@
+@use '@/assets/scss/variables' as vars;
+
+.ssl-certificate-grid {
+  display: grid;
+  gap: vars.$space-lg;
+  grid-template-columns: minmax(18rem, 0.85fr) minmax(20rem, 1.15fr);
+}
+
+.ssl-certificate-panel {
+  padding: vars.$space-md;
+}
+
+.ssl-certificate-panel .surface-card__title {
+  font-size: vars.$font-size-lg;
+}
+
+.ssl-certificate-form {
+  display: grid;
+  gap: vars.$space-md;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ssl-certificate-form__wide {
+  grid-column: 1 / -1;
+}
+
+.ssl-certificate-password-field {
+  display: flex;
+  align-items: center;
+  gap: vars.$space-xs;
+}
+
+.ssl-certificate-password-field .field-input {
+  width: 100%;
+}
+
+.ssl-certificate-password-field__icon {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  color: vars.$color-accent-primary;
+}
+
+.ssl-certificate-output {
+  width: 100%;
+  min-height: 26rem;
+  background: vars.$color-bg-surface;
+  border: 1px solid vars.$color-border-default;
+  border-radius: vars.$radius-xs;
+  color: vars.$color-text-primary;
+  font-family: vars.$font-primary;
+  font-size: vars.$font-size-sm;
+  line-height: vars.$line-height-base;
+  padding: vars.$space-md;
+  resize: vertical;
+}
+
+@media (max-width: 64rem) {
+  .ssl-certificate-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: vars.$breakpoint-mobile) {
+  .ssl-certificate-form {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "React Tool Builder"
+  short_description: "Build Toolbox tool features"
+  default_prompt: "Use $react-tool-builder to add or refactor a Toolbox tool with i18n, tests, and SCSS standards."

@@ -1,51 +1,19 @@
-import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
+﻿import { useState } from 'react'
 import './assets/scss/main.scss'
-import Sidebar from './components/sidebar/Sidebar'
-import LanguageSelector from './components/language-selector/LanguageSelector'
-import Home, { HomePage } from './pages/Home'
-import About, { AboutPage } from './pages/About'
-import TextEditor, { TextEditorPage } from './pages/tools/text-editor/TextEditor'
-import JsonFormatter, { JsonFormatterPage } from './pages/tools/json-formatter/JsonFormatter'
-import type { Page } from './types/Page' // Page agora é um objeto { name: string }
+import AppLayout from './components/layout/AppLayout'
+import { getPageEntry, pageRegistry, toolRegistry } from './tools/registry'
+import type { PageId } from './tools/types'
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<Page>(HomePage)
-  const { t } = useTranslation()
+  const [currentPageId, setCurrentPageId] = useState<PageId>('home')
 
-  const renderPage = () => {
-    switch (currentPage.name) {
-      case HomePage.name:
-        return <Home />
-      case AboutPage.name:
-        return <About />
-      case TextEditorPage.name:
-        return <TextEditor />
-      case JsonFormatterPage.name:
-        return <JsonFormatter />
-      default:
-        return <Home />
-    }
-  }
+  const currentPageEntry = getPageEntry(currentPageId) ?? pageRegistry[0]
+  const CurrentPageComponent = currentPageEntry.component
 
   return (
-    <div className="app">
-      <header className="header">
-        <h1 className="title">{t('i18n_title')}</h1>
-        <LanguageSelector />
-      </header>
-
-      <div className="main-container">
-        <Sidebar 
-          currentPage={currentPage} 
-          onPageChange={setCurrentPage} 
-        />
-        
-        <main className="content">
-          {renderPage()}
-        </main>
-      </div>
-    </div>
+    <AppLayout currentPageId={currentPageId} onNavigate={setCurrentPageId} pageEntries={pageRegistry}>
+      <CurrentPageComponent onNavigate={setCurrentPageId} toolEntries={toolRegistry} />
+    </AppLayout>
   )
 }
 

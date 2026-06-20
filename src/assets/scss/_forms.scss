@@ -1,48 +1,50 @@
 @use 'variables' as vars;
 
-input{
-  padding: 0.5rem; // ou spacing-p-0_5
-  border-radius: 4px; // ou radius-sm
-  border: 1px solid vars.$border-color;
-  background-color: vars.$midnight-darker;
-  color: vars.$text-gray;
+input,
+.field-input {
+  min-height: vars.$control-height-md;
+  padding: vars.$space-sm vars.$space-md;
+  border-radius: vars.$radius-xs;
+  border: 1px solid vars.$color-border-default;
+  background-color: vars.$color-bg-surface;
+  color: vars.$color-text-secondary;
 }
 
+.tool-actions,
 .controls {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: vars.$space-sm;
+  margin-bottom: vars.$space-md;
   align-items: center;
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
-  font-size: 0.9rem;
+  font-size: vars.$font-size-sm;
 }
 
 .input-group input,
 .input-text {
-  background: vars.$midnight-darker;   // ✅ Usando namespace
-  border: 1px solid vars.$border-color; // ✅ Usando namespace
-  color: vars.$text-white;             // ✅ Usando namespace
-  padding: vars.$spacing-sm;           // ✅ Usando namespace
-  border-radius: 4px;
-  font-family: vars.$font-primary;     // ✅ Usando namespace
+  background: vars.$color-bg-surface;
+  border: 1px solid vars.$color-border-default;
+  color: vars.$color-text-primary;
+  padding: vars.$space-sm;
+  border-radius: vars.$radius-xs;
+  font-family: vars.$font-primary;
 }
-
 
 .text-area {
   width: 100%;
   min-height: 45vh;
-  background: vars.$midnight-darker;
-  border: 1px solid vars.$border-color;
-  color: vars.$text-white;
-  padding: vars.$spacing-md;
-  border-radius: vars.$border-radius-sm;
+  background: vars.$color-bg-surface;
+  border: 1px solid vars.$color-border-default;
+  color: vars.$color-text-primary;
+  padding: vars.$space-md;
+  border-radius: vars.$radius-xs;
   font-family: vars.$font-primary;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: vars.$font-size-sm;
+  line-height: vars.$line-height-base;
   resize: vertical;
 }

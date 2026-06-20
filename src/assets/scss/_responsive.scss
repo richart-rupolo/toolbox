@@ -1,16 +1,15 @@
 @use 'variables' as vars;
 
-// Tablet layout
-@media (max-width: 768px) {
+@media (max-width: vars.$breakpoint-tablet) {
   .header {
-    padding: vars.$spacing-md;
+    padding: vars.$space-md;
     flex-direction: column;
-    gap: vars.$spacing-md;
+    gap: vars.$space-md;
     min-height: auto;
   }
 
   .title {
-    font-size: 2rem;
+    font-size: vars.$font-size-2xl;
   }
 
   .main-container {
@@ -18,24 +17,23 @@
   }
 
   .content {
-    padding: vars.$spacing-md;
+    padding: vars.$space-md;
     margin-left: 0;
   }
 }
 
-// Mobile layout
-@media (max-width: 480px) {
+@media (max-width: vars.$breakpoint-mobile) {
   .language-selector {
-    gap: 0.3rem;
+    gap: vars.$space-2xs;
   }
 
   .flag-button {
-    min-width: 35px;
-    height: 35px;
-    padding: 0.3rem;
+    min-width: vars.$flag-control-size-sm;
+    height: vars.$flag-control-size-sm;
+    padding: vars.$space-2xs;
   }
 
   .flag {
-    font-size: 1rem;
+    font-size: vars.$font-size-md;
   }
 }
